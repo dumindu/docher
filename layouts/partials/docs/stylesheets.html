@@ -1,7 +1,9 @@
-{{ $pathDocScss := "scss/docs.scss"}}
+{{ $scssDocs := "scss/docs.scss"}}
+
 {{ $pathDocCss := "css/docs.css"}}
+
 {{- $sassOptions := dict "targetPath" $pathDocCss -}}
-{{ $css := resources.Get $pathDocScss | toCSS $sassOptions | minify | fingerprint }}
+{{ $css := resources.Get $scssDocs | toCSS $sassOptions | minify | fingerprint }}
 
 <link rel="preload" href="{{ $css.RelPermalink }}" as="style">
 <link href="{{ $css.RelPermalink }}" rel="stylesheet" integrity="{{ $css.Data.integrity }}">

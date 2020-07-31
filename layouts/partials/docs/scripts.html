@@ -1,0 +1,8 @@
+{{- $jsCommon := resources.Match "js/*.js" -}}
+{{- $jsDocs := resources.Match "js/docs/*.js" -}}
+
+{{ $pathDocJs := "js/docs.js"}}
+
+{{- $js := append $jsCommon $jsDocs | resources.Concat $pathDocJs | minify | fingerprint -}}
+
+<script src="{{ $js.Permalink | relURL }}"></script>

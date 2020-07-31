@@ -2,12 +2,18 @@
 <html>
 
 <head>
-    <title>{{ .Title | markdownify }}</title>
-    {{ partial "docs/stylesheets" . }}
+    {{ partial "docs/head" . }}
 </head>
 
 <body>
-{{ .Content }}
+{{ partial "docs/navbar" . }}
+<div>
+    {{ partial "docs/sidebar" . }}
+    {{ partial "docs/content" . }}
+</div>
+{{ partial "docs/footer" . }}
+
+{{ partial "docs/scripts" . }}
 </body>
 
 </html>

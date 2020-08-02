@@ -1,5 +1,42 @@
 @import "variables";
+@import "reset";
 
 body {
-  color: $text-color;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+#sidebar {
+  flex: 0 0 17rem;
+  padding: 0 .5rem;
+}
+
+#sidebar section {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex: 1;
+}
+
+#article-toc {
+  flex: 0 0 17rem;
+  padding: 0 .5rem;
+}
+
+#article {
+  flex: 1;
+}
+
+#article footer {
+  display: flex;
+  flex-direction: row;
 }

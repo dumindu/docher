@@ -1,3 +1,19 @@
-<nav>
-    <a href="#">Docher Sidebar</a>
-</nav>
+<aside id="sidebar">
+    <nav>
+        {{- $url := split .Permalink "/" -}}
+        {{- $page_slug := index $url (sub (len $url) 2) -}}
+
+        {{- range $group := .Site.Data.docs.sidebar -}}
+            {{- $group_slug := $group.title | urlize -}}
+            <section>
+                <h4>{{ $group.title }}</h4>
+                {{- range $doc := $group.pages -}}
+                    {{- $doc_slug := $doc.title | urlize -}}
+                    {{- $href := printf "/en/docs/%s/%s/" $group_slug $doc_slug }}
+                    <a href="{{ $href }}">{{ $doc.title }}</a>
+                {{- end }}
+            </section>
+        {{- end }}
+
+    </nav>
+</aside>

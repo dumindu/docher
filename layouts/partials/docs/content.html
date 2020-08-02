@@ -1,1 +1,17 @@
-{{ .Content }}
+<main>
+    <article id="article">
+        <header>
+            <h1>{{ .Title | markdownify }}</h1>
+        </header>
+        {{ .Content }}
+        <footer>
+            <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">
+                Last updated: {{ .Lastmod.Format "2006-01-02" }}
+            </time>
+        </footer>
+    </article>
+    <aside id="article-toc">
+        <h4>What's on this Page</h4>
+        {{ .TableOfContents }}
+    </aside>
+</main>

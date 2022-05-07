@@ -1,1 +1,5 @@
 enableGitInfo=true
+
+[markup]
+  [markup.highlight]
+    codeFences = false

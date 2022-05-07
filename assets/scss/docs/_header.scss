@@ -1,0 +1,15 @@
+#header {
+  background: $header-background-color;
+  padding: 10px 0;
+}
+
+#header nav {
+  padding-left: 20px;
+}
+
+#header nav a {
+  color: #c1c3c5;
+  text-decoration: none;
+  padding: 0 15px;
+  line-height: 50px;
+}

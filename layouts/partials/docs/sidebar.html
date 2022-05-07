@@ -1,16 +1,18 @@
 <aside id="sidebar">
     <nav>
         {{- $url := split .Permalink "/" -}}
-        {{- $page_slug := index $url (sub (len $url) 2) -}}
+        {{- $url_page_slug := index $url (sub (len $url) 2) -}}
 
         {{- range $group := .Site.Data.docs.sidebar -}}
             {{- $group_slug := $group.title | urlize -}}
+            {{- $is_active_group := eq $.Page.Params.group $group_slug }}
             <section>
                 <h4>{{ $group.title }}</h4>
-                {{- range $doc := $group.pages -}}
-                    {{- $doc_slug := $doc.title | urlize -}}
-                    {{- $href := printf "/en/docs/%s/%s/" $group_slug $doc_slug }}
-                    <a href="{{ $href }}">{{ $doc.title }}</a>
+                {{- range $page := $group.pages -}}
+                    {{- $page_slug := $page.title | urlize -}}
+                    {{- $is_active_page := and $is_active_group (eq $url_page_slug $page_slug) -}}
+                    {{- $href := printf "/en/docs/%s/%s/" $group_slug $page_slug }}
+                    <a href="{{ $href }}" class="{{ if $is_active_page }}current{{ end }}">{{ $page.title }}</a>
                 {{- end }}
             </section>
         {{- end }}
